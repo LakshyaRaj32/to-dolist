@@ -3,6 +3,11 @@
   publish = "client/dist"
   functions = "netlify/functions"
 
+[build.environment]
+  NODE_VERSION = "20"
+  # mongodb-memory-server is only for local dev/tests; skip its ~600 MB MongoDB download on Netlify.
+  MONGOMS_DISABLE_POSTINSTALL = "1"
+
 [functions]
   node_bundler = "esbuild"
   external_node_modules = ["mongoose"]
