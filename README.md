@@ -13,7 +13,7 @@ A mobile-first to-do app that organises tasks by week (Monday → Sunday) and sh
 - **Backend:** Node.js, Express, Mongoose / MongoDB, zod, JWT (jsonwebtoken + bcryptjs), helmet, express-rate-limit
 - **Deploy:** Netlify. The Express API runs as a Netlify Function, so one site serves both the UI and the API.
 
-> **Live demo:** _add your Netlify URL here_
+> **Live demo:** https://lakshya-todolist.netlify.app
 
 ## Screenshots
 
