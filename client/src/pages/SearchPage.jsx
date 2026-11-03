@@ -152,7 +152,7 @@ export default function SearchPage() {
 
   return (
     <div className="min-h-dvh bg-page">
-      <div className="mx-auto w-full max-w-md px-6 pt-6 pb-16 md:max-w-2xl md:px-10 md:pt-10">
+      <div className="mx-auto w-full max-w-md px-6 pt-6 pb-[calc(4rem_+_var(--bottom-inset))] md:max-w-2xl md:px-10 md:pt-10">
         <BackButton />
 
         <form role="search" onSubmit={(e) => e.preventDefault()} className="mt-5">

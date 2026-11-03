@@ -36,7 +36,7 @@ export default function OnboardingPage() {
         <Zigzag className="absolute right-0 bottom-[5%] w-[30%] max-w-[160px] text-white/20" />
       </div>
 
-      <div className="flex flex-col bg-white px-6 pt-8 pb-[max(2rem,env(safe-area-inset-bottom))] md:w-[46%] md:max-w-xl md:justify-center md:px-16">
+      <div className="flex flex-col bg-white px-6 pt-8 pb-[calc(max(2rem,env(safe-area-inset-bottom))_+_var(--bottom-inset))] md:w-[46%] md:max-w-xl md:justify-center md:px-16">
         <h1 className="text-[26px] leading-tight font-semibold md:text-[34px]">Manage What To Do</h1>
         <p className="mt-4 max-w-[290px] text-[13px] leading-[1.7] text-body md:max-w-sm md:text-[15px]">
           The best way to manage what you have to do, don't forget your plans

@@ -1,7 +1,7 @@
 export default function Toast({ toast, onClose }) {
   if (!toast) return null;
   return (
-    <div className="pointer-events-none fixed inset-x-0 bottom-28 z-[60] flex justify-center px-6">
+    <div className="pointer-events-none fixed inset-x-0 bottom-[calc(7rem_+_var(--bottom-inset))] z-[60] flex justify-center px-6">
       <div
         key={toast.id}
         role="status"

@@ -17,6 +17,11 @@
   --color-danger: #e5484d;
 }
 
+:root {
+  /* Space taken by a host overlay at the bottom of the screen (see src/lib/bottomInset.js). */
+  --bottom-inset: 0px;
+}
+
 html,
 body,
 #root {

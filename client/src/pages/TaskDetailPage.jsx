@@ -39,7 +39,7 @@ export default function TaskDetailPage() {
 
   return (
     <div className="min-h-dvh bg-page">
-      <div className="mx-auto flex min-h-dvh w-full max-w-md flex-col px-6 pt-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] md:min-h-0 md:max-w-2xl md:px-10 md:pt-10">
+      <div className="mx-auto flex min-h-dvh w-full max-w-md flex-col px-6 pt-6 pb-[calc(max(1.5rem,env(safe-area-inset-bottom))_+_var(--bottom-inset))] md:min-h-0 md:max-w-2xl md:px-10 md:pt-10">
         <BackButton />
 
         {error && <p className="mt-16 text-center text-[13px] text-danger">{error}</p>}

@@ -86,7 +86,7 @@ export default function AuthPage({ mode }) {
         <Zigzag className="absolute right-0 bottom-[8%] hidden w-[30%] max-w-[160px] text-white/20 md:block" />
       </div>
 
-      <main className="flex flex-1 flex-col px-6 pt-8 pb-[max(2rem,env(safe-area-inset-bottom))] md:w-[46%] md:max-w-xl md:flex-none md:justify-center md:px-16">
+      <main className="flex flex-1 flex-col px-6 pt-8 pb-[calc(max(2rem,env(safe-area-inset-bottom))_+_var(--bottom-inset))] md:w-[46%] md:max-w-xl md:flex-none md:justify-center md:px-16">
         {isGuest && (
           <Link to="/" className="-mt-2 mb-5 inline-flex items-center gap-1.5 self-start text-[13px] font-medium text-primary">
             <ArrowLeft className="size-4" /> Back to my tasks

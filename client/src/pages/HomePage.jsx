@@ -148,7 +148,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-dvh bg-page">
-      <div className="mx-auto w-full max-w-md px-6 pt-6 pb-36 md:max-w-5xl md:px-10 md:pt-10">
+      <div className="mx-auto w-full max-w-md px-6 pt-6 pb-[calc(9rem_+_var(--bottom-inset))] md:max-w-5xl md:px-10 md:pt-10">
         <div className="md:grid md:grid-cols-2 md:gap-12 lg:gap-20">
           {/* Left column: search, week picker, stats */}
           <section className="space-y-7 md:sticky md:top-10 md:self-start">
@@ -273,7 +273,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      <div className="pointer-events-none fixed inset-x-0 bottom-0 z-30 mx-auto flex max-w-5xl justify-center pb-[max(1.75rem,env(safe-area-inset-bottom))] md:justify-end md:px-10 md:pb-10">
+      <div className="pointer-events-none fixed inset-x-0 bottom-0 z-30 mx-auto flex max-w-5xl justify-center pb-[calc(max(1.75rem,env(safe-area-inset-bottom))_+_var(--bottom-inset))] md:justify-end md:px-10 md:pb-[calc(2.5rem_+_var(--bottom-inset))]">
         <button
           type="button"
           onClick={() => newTask(toInputDate(selected))}

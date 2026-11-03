@@ -4,7 +4,10 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import { AppProvider } from './lib/store';
 import { AuthProvider } from './lib/auth';
+import { watchBottomInset } from './lib/bottomInset';
 import './index.css';
+
+watchBottomInset();
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

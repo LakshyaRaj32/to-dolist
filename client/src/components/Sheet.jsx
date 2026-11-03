@@ -24,7 +24,7 @@ export default function Sheet({ title, onClose, children }) {
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        className="animate-sheet relative max-h-[92dvh] w-full max-w-md overflow-y-auto bg-white px-6 pt-7 pb-[max(1.5rem,env(safe-area-inset-bottom))] md:max-w-lg md:rounded-[4px] md:px-8 md:pt-8 md:pb-8"
+        className="animate-sheet relative max-h-[92dvh] w-full max-w-md overflow-y-auto bg-white px-6 pt-7 pb-[calc(max(1.5rem,env(safe-area-inset-bottom))_+_var(--bottom-inset))] md:max-w-lg md:rounded-[4px] md:px-8 md:pt-8 md:pb-8"
       >
         <div className="flex items-center justify-between">
           <h2 id={titleId} className="text-[17px] font-semibold">
