@@ -5,9 +5,10 @@ import { insertAt, removeFromList, replaceInList } from '../lib/tasks';
 /**
  * Optimistic toggle/delete for a list held in local state:
  * the UI updates immediately, and is rolled back if the API call fails.
+ * Deleting asks for confirmation first.
  */
 export function useTaskListActions(setList) {
-  const { setStatus, removeTask } = useTaskActions();
+  const { setStatus, removeTask, confirmDelete } = useTaskActions();
 
   const toggle = useCallback(
     (task, status = task.status === 'completed' ? 'todo' : 'completed') => {
@@ -18,7 +19,8 @@ export function useTaskListActions(setList) {
   );
 
   const remove = useCallback(
-    (task) => {
+    async (task) => {
+      if (!(await confirmDelete(task))) return false;
       let index = -1;
       setList((list) => {
         index = list ? list.findIndex((t) => t.id === task.id) : -1;
@@ -26,7 +28,7 @@ export function useTaskListActions(setList) {
       });
       return removeTask(task, { rollback: () => setList((list) => insertAt(list, index, task)) });
     },
-    [setList, removeTask]
+    [setList, removeTask, confirmDelete]
   );
 
   return { toggle, remove };

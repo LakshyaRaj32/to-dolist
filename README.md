@@ -107,7 +107,7 @@ If `JWT_SECRET` is missing, the API falls back to an insecure secret in developm
 | --- | --- |
 | Create a task: title\*, description, date & time\*, priority | **+** button → *Add New Task* sheet. Start time and date are required. The end time and tags are optional. |
 | Edit any field | Pen icon on a task, or **Edit** on the task details screen |
-| Delete | **Swipe a task left → Delete** (touch or mouse). The trash icon also deletes. Each delete shows an **Undo** toast. |
+| Delete | **Swipe a task left → Delete** (touch or mouse). The trash icon and the details screen also delete. Every delete asks for confirmation first (*Delete task?* → Cancel / Delete), then shows an **Undo** toast. |
 | Search by keyword | Search bar → matches title, description and tags. Each result supports **View** (tap), **Edit** (pen) and **Delete** (trash or swipe). |
 | Tasks grouped by week, Monday–Sunday | The day strip shows the selected Mon–Sun week (swipe it, or use the arrows on desktop). **Weekly Overview** lists every week. Weeks are computed by MongoDB in the user's time zone. |
 | Week cards: open / completed counts, expand to show tasks | *Task Complete / Task Pending* cards and *Weekly Progress* for the selected week. Weekly Overview cards expand to show that week's tasks. |

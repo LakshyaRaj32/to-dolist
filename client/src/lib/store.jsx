@@ -3,6 +3,7 @@ import { api } from './api';
 import { editableFields } from './tasks';
 import Toast from '../components/Toast';
 import OfflineBanner from '../components/OfflineBanner';
+import ConfirmDialog from '../components/ConfirmDialog';
 
 const AppContext = createContext(null);
 
@@ -44,18 +45,41 @@ export function AppProvider({ children }) {
     setToast(null);
   }, []);
 
+  // `await confirm({ title, message })` resolves to true (confirmed) or false (cancelled).
+  const [dialog, setDialog] = useState(null);
+  const confirm = useCallback(
+    (options) => new Promise((resolve) => setDialog({ ...options, resolve })),
+    []
+  );
+  const closeDialog = (result) => {
+    dialog?.resolve(result);
+    setDialog(null);
+  };
+
   // Coming back online: refresh everything that was served from the cache.
   useEffect(() => {
     if (online) changed();
   }, [online, changed]);
 
-  const value = useMemo(() => ({ version, changed, showToast, online }), [version, changed, showToast, online]);
+  const value = useMemo(
+    () => ({ version, changed, showToast, online, confirm }),
+    [version, changed, showToast, online, confirm]
+  );
 
   return (
     <AppContext.Provider value={value}>
       {!online && <OfflineBanner />}
       {children}
       <Toast toast={toast} onClose={hideToast} />
+      {dialog && (
+        <ConfirmDialog
+          title={dialog.title}
+          message={dialog.message}
+          confirmLabel={dialog.confirmLabel}
+          onConfirm={() => closeDialog(true)}
+          onCancel={() => closeDialog(false)}
+        />
+      )}
     </AppContext.Provider>
   );
 }
@@ -70,7 +94,18 @@ const failureMessage = (err) =>
  * and pass `rollback`, which runs if the request fails.
  */
 export function useTaskActions() {
-  const { changed, showToast } = useApp();
+  const { changed, showToast, confirm } = useApp();
+
+  // Second confirmation before any delete (the Undo toast remains as a safety net).
+  const confirmDelete = useCallback(
+    (task) =>
+      confirm({
+        title: 'Delete task?',
+        message: `“${task.title}” will be permanently deleted.`,
+        confirmLabel: 'Delete',
+      }),
+    [confirm]
+  );
 
   const setStatus = useCallback(
     async (task, status, { rollback } = {}) => {
@@ -128,5 +163,5 @@ export function useTaskActions() {
     [changed, showToast]
   );
 
-  return { setStatus, removeTask, reorderTasks };
+  return { setStatus, removeTask, reorderTasks, confirmDelete };
 }

@@ -12,7 +12,7 @@ export default function TaskDetailPage() {
   const { id } = useParams();
   const goBack = useGoBack();
   const { version } = useApp();
-  const { removeTask, setStatus } = useTaskActions();
+  const { removeTask, setStatus, confirmDelete } = useTaskActions();
   const { editTask } = useTaskNavigation();
   const [task, setTask] = useState(null);
   const [error, setError] = useState(null);
@@ -116,7 +116,7 @@ export default function TaskDetailPage() {
             <div className="mt-auto grid grid-cols-2 gap-4 pt-10 md:mt-10">
               <button
                 type="button"
-                onClick={async () => (await removeTask(task)) && goBack()}
+                onClick={async () => (await confirmDelete(task)) && (await removeTask(task)) && goBack()}
                 className="h-12 rounded-[2px] border border-danger text-[15px] font-medium text-danger transition hover:bg-danger/5"
               >
                 Delete
