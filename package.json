@@ -1,0 +1,22 @@
+{
+  "name": "to-dolist",
+  "private": true,
+  "version": "1.0.0",
+  "description": "MERN To-Do List app with weekly task overview",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "dev": "concurrently -n api,web -c blue,magenta \"npm run dev -w server\" \"npm run dev -w client\"",
+    "dev:mem": "concurrently -n api,web -c blue,magenta \"npm run dev:mem -w server\" \"npm run dev -w client\"",
+    "build": "npm run build -w client",
+    "test": "npm test -w server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "dependencies": {
+    "serverless-http": "^3.2.0"
+  }
+}

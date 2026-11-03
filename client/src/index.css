@@ -1,0 +1,84 @@
+@import 'tailwindcss';
+
+/* Design tokens taken from the Figma file. */
+@theme {
+  --font-sans: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+  --color-primary: #4566ec;
+  --color-primary-dark: #263d9f;
+  --color-track: #dadefb;
+  --color-ink: #1b1b1b;
+  --color-body: #6b6b6b;
+  --color-muted: #a3a3a3;
+  --color-line: #e9e9ee;
+  --color-field: #e3e3e8;
+  --color-page: #fbfbff;
+  --color-complete: #eef1ff;
+  --color-pending: #ffe3e3;
+  --color-danger: #e5484d;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  @apply bg-page font-sans text-ink antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@keyframes sheet-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pop-in {
+  from {
+    transform: translateY(8px) scale(0.98);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+.animate-sheet {
+  animation: sheet-up 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.animate-fade {
+  animation: fade-in 0.2s ease-out;
+}
+
+.animate-pop {
+  animation: pop-in 0.2s ease-out;
+}
+
+@media (min-width: 768px) {
+  .animate-sheet {
+    animation: pop-in 0.2s ease-out;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-sheet,
+  .animate-fade,
+  .animate-pop {
+    animation: none;
+  }
+}
